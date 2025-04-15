@@ -1,0 +1,32 @@
+<odoo>
+    <record id="rafm_controls_modification_wizard" model="ir.ui.view">
+        <field name="name">rafm.controls.modification.wizard.form</field>
+        <field name="model">rafm.controls.modification.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Enter Description">
+                <group>
+                    <group>
+                        <field name="time_stamp"/>
+                        <field name="user_id" invisible="1"/>
+                        <field name="control_id" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="text_input"/>
+                    </group>
+                </group>
+                <footer>
+                    <button name="confirm_action" type="object" string="Confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_controls_modification_wizard" model="ir.actions.act_window">
+        <field name="name">Enter Description</field>
+        <field name="res_model">rafm.controls.modification.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="rafm_controls_modification_wizard"/>
+        <field name="target">new</field>
+    </record>
+</odoo>

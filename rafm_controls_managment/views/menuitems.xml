@@ -1,0 +1,72 @@
+<odoo>
+
+    <menuitem 
+        id="main_menu_rafm_managment"
+        name="RAFM Managment"               
+        web_icon="rafm_controls_managment,static/description/icon.png"
+        sequence="10" />
+    
+    <menuitem 
+        id="menu_rafm_controls"
+        name="RAFM Controls"               
+        parent="main_menu_rafm_managment"
+        sequence="1"
+        action="action_rafm_control"/>
+    
+    <menuitem 
+        id="menu_rafm_managment_config" 
+        name="Configuration" 
+        parent="main_menu_rafm_managment"
+        groups="rafm_controls_managment.group_rafm_admin_full"
+        sequence="100"/>
+
+        <menuitem 
+            id="menu_rafm_data_source" 
+            name="RAFM Data Sources" 
+            parent="menu_rafm_managment_config"
+            sequence="1" 
+            action="action_rafm_data_source"/>
+
+        <menuitem 
+            id="menu_rafm_category" 
+            name="RAFM Category" 
+            parent="menu_rafm_managment_config"
+            sequence="2" 
+            action="action_rafm_category"/>
+
+        <menuitem 
+            id="menu_rafm_frontend" 
+            name="RAFM Frontends" 
+            parent="menu_rafm_managment_config"
+            sequence="3" 
+            action="action_rafm_frontend"/>
+
+        <menuitem 
+            id="menu_rafm_cycle" 
+            name="RAFM Audit Cycles" 
+            parent="menu_rafm_managment_config"
+            sequence="4" 
+            action="action_rafm_cycle"/>
+
+    <menuitem 
+        id="menu_rafm_logs" 
+        name="Logs" 
+        parent="main_menu_rafm_managment"
+        sequence="2"/>
+        
+        <menuitem 
+            id="menu_rafm_controls_status" 
+            name="Control Logs" 
+            parent="menu_rafm_logs"
+            sequence="1" 
+            action="action_rafm_control_status_view"/>
+
+        <menuitem 
+            id="menu_rafm_modification_logs" 
+            name="Modification Logs" 
+            parent="menu_rafm_logs"
+            sequence="10" 
+            action="action_rafm_modification_logs"/>
+            
+
+</odoo>

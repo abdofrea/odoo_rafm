@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="email_template_daily_report" model="mail.template">
+            <field name="name">Daily Monitoring Report</field>
+            <field name="email_from">rafm.odoo@almadar.ly</field>
+            <field name="email_to">a.freaa@almadar.ly; a.dhaim@almadar.ly; h.musrati@almadar.ly</field>
+            <field name="subject">📊 Daily Monitoring Report</field>
+            <field name="model_id" ref="rafm_controls_managment.model_rafm_daily_email" />
+            <field name="body_html" type="html">
+                <html>
+                    <body style="font-family: Arial, sans-serif; background-color: #f5fdf5; padding: 20px;">
+                        <div style="max-width: 700px; background: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1); margin: auto;">
+
+                            <!-- Logo and Header -->
+                            <div style="text-align: center; border-bottom: 3px solid #4caf50; padding-bottom: 20px;">
+                                <img src="/rafm_controls_managment/static/description/almadar_logo.png" alt="Company Logo" style="max-width: 120px; margin-bottom: 10px;"/>
+                                <h2 style="color: #388e3c; font-size: 28px;">📊 Daily Monitoring Report</h2>
+                            </div>
+
+                            <!-- Introduction -->
+                            <p style="font-size: 18px; text-align: center; color: #333;">RAFM Controls Management - Daily Report</p>
+
+                            <!-- Section 1: General Metrics -->
+                            <h3 style="border-bottom: 2px solid #a5d6a7; padding-bottom: 5px; color: #2e7d32;">📈 General Metrics</h3>
+                            <table style="width: 100%; border: 1px solid #a5d6a7; border-collapse: collapse; font-size: 16px;">
+                                <tr style="background: #e8f5e9; border-bottom: 1px solid #a5d6a7;">
+                                    <th style="padding: 12px; border: 1px solid #a5d6a7; color: #2e7d32;">Metric</th>
+                                    <th style="padding: 12px; border: 1px solid #a5d6a7; color: #2e7d32;">Value</th>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">Total Controls</td>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">
+                                        <t t-esc="object.all_controls"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">Total Covered Controls</td>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">
+                                        <t t-esc="object.all_covered_controls"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; background-color: #f0f0f0; color: red; font-weight: bold; border-radius: 5px;">Uncovered Controls</td>
+                                    <td style="padding: 12px;">
+                                        <span style="background-color: #f0f0f0; color: red; padding: 5px 10px; border-radius: 5px; font-weight: bold;">
+                                            <t t-esc="object.uncovered_controls"/>
+                                        </span>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Section 2: Status Breakdown -->
+                            <h3 style="border-bottom: 2px solid #a5d6a7; padding-bottom: 5px; color: #2e7d32; margin-top: 20px;">✅ Status Breakdown</h3>
+                            <table style="width: 100%; border: 1px solid #a5d6a7; border-collapse: collapse; font-size: 16px;">
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7; color: green;">Pass</td>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">
+                                        <t t-esc="json.loads(object.status).get('pass', 0)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7; color: orange;">ETL Issues</td>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">
+                                        <t t-esc="json.loads(object.status).get('etl_issue', 0)"/>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7; color: red;">Suspected Cases</td>
+                                    <td style="padding: 12px; border: 1px solid #a5d6a7;">
+                                        <t t-esc="json.loads(object.status).get('suspected', 0)"/>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <!-- Section 3: User Activity -->
+                            <h3 style="border-bottom: 2px solid #a5d6a7; padding-bottom: 5px; color: #2e7d32; margin-top: 20px;">👥 User Activity</h3>
+                            <table style="width: 100%; border: 1px solid #a5d6a7; border-collapse: collapse; font-size: 16px;">
+                                <tr>
+                                    <th style="padding: 12px; border: 1px solid #a5d6a7; color: #2e7d32;">User</th>
+                                    <th style="padding: 12px; border: 1px solid #a5d6a7; color: #2e7d32;">Covered Controls</th>
+                                    <th style="padding: 12px; border: 1px solid #a5d6a7; color: #2e7d32;">Logs Processed</th>
+                                </tr>
+                                <t t-foreach="json.loads(object.users).items()" t-as="user">
+                                    <tr>
+                                        <td style="padding: 15px; border: 1px solid #a5d6a7;">
+                                            <t t-esc="user[0]"/>
+                                        </td>
+                                        <td style="padding: 15px; border: 1px solid #a5d6a7;">
+                                            <t t-esc="user[1]['covered_controls']"/>
+                                        </td>
+                                        <td style="padding: 15px; border: 1px solid #a5d6a7;">
+                                            <t t-esc="user[1]['logs']"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+
+                            <!-- Closing -->
+                            <p style="font-size: 18px; margin-top: 30px;">RAFM Management<br/>
+                            <strong>Almadar Aljadid</strong>
+                        </p>
+                    </div>
+                </body>
+            </html>
+        </field>
+    </record>
+</data>
+</odoo>

@@ -1,0 +1,33 @@
+<odoo>
+    <record id="view_rafm_data_source_form" model="ir.ui.view">
+        <field name="name">rafm.data.source.form</field>
+        <field name="model">rafm.data.source</field>
+        <field name="arch" type="xml">
+            <form string="RAFM Data Source">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="description"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_rafm_data_source_tree" model="ir.ui.view">
+        <field name="name">rafm.data.source.tree</field>
+        <field name="model">rafm.data.source</field>
+        <field name="arch" type="xml">
+            <tree string="RAFM Data Sources">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_rafm_data_source" model="ir.actions.act_window">
+        <field name="name">RAFM Data Sources</field>
+        <field name="res_model">rafm.data.source</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+</odoo>
