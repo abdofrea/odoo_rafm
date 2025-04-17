@@ -12,7 +12,22 @@
         parent="main_menu_rafm_managment"
         sequence="1"
         action="action_rafm_control"/>
-    
+
+
+    <menuitem
+            id="menu_fraud_root"
+            parent="main_menu_rafm_managment"
+            sequence="2"
+            name="Fraud Management"/>
+
+    <menuitem
+            id="menu_fraud_ranges"
+            name="Number Ranges"
+            parent="menu_fraud_root"
+            sequence="1"
+            action="action_fraud_number_range"/>
+
+
     <menuitem 
         id="menu_rafm_managment_config" 
         name="Configuration" 
@@ -48,11 +63,18 @@
             sequence="4" 
             action="action_rafm_cycle"/>
 
+        <menuitem
+                id="menu_fraud_types"
+                name="Fraud Types"
+                parent="menu_rafm_managment_config"
+                sequence="5"
+                action="action_fraud_type"/>
+
     <menuitem 
         id="menu_rafm_logs" 
         name="Logs" 
         parent="main_menu_rafm_managment"
-        sequence="2"/>
+        sequence="3"/>
         
         <menuitem 
             id="menu_rafm_controls_status" 

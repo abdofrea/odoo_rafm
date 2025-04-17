@@ -20,6 +20,7 @@
         'views/rafm_category_view.xml',
         'views/rafm_modification_logs.xml',
         'views/rafm_controls_status.xml',
+        'views/fraud_range_view.xml',
         'views/menuitems.xml',
         'wizard/register_modification_log_view.xml',
         'wizard/rafm_controls_status_log_view .xml',

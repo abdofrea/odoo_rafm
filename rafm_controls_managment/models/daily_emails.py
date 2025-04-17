@@ -84,5 +84,9 @@ class RAFMEmail(models.Model):
             'domain': json.loads(report_record.domain or '{}'),
         }
         # Send the email
-        # _logger.info("big_dict",context)
+
+        rendered_body = template._render_field('body_html', [report_record.id], context)[report_record.id]
+
+        _logger.info(rendered_body)
+
         template.with_context(context).send_mail(report_record.id)

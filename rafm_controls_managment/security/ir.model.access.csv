@@ -9,6 +9,10 @@ access_rafm_frontend_users,access_rafm_frontend_users,model_rafm_controls_fronte
 access_rafm_control_admin,access_rafm_control_admin,model_rafm_control,rafm_controls_managment.group_rafm_admin_full,1,1,1,1
 access_rafm_control_users,access_rafm_control_users,model_rafm_control,rafm_controls_managment.group_rafm_controls_user,1,1,1,1
 
+access_fraud_range_admin,access_fraud_range_admin,model_fraud_number_range,rafm_controls_managment.group_rafm_admin_full,1,1,1,1
+access_fraud_range_users,access_fraud_range_users,model_fraud_number_range,rafm_controls_managment.group_rafm_controls_user,1,1,1,1
+
+
 access_rafm_datasource_admin,access_rafm_datasource_admin,model_rafm_data_source,rafm_controls_managment.group_rafm_admin_full,1,1,1,1
 access_rafm_datasource_users,access_rafm_datasource_users,model_rafm_data_source,rafm_controls_managment.group_rafm_controls_user,1,0,0,0
 
@@ -24,3 +28,6 @@ access_rafm_controls_status_wizard,access_rafm_controls_status_wizard,model_rafm
 
 
 access_rafm_daily_email,access_rafm_daily_email,model_rafm_daily_email,,1,1,1,1
+
+access_fraud_type,access_fraud_type,model_fraud_type,,1,1,1,1
+access_fraud_number_range_line,access_fraud_number_range_line,model_fraud_number_range_line,,1,1,1,1
