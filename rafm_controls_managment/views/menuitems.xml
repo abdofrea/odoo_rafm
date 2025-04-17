@@ -1,5 +1,7 @@
 <odoo>
 
+    
+
     <menuitem 
         id="main_menu_rafm_managment"
         name="RAFM Managment"               
@@ -13,11 +15,24 @@
         sequence="1"
         action="action_rafm_control"/>
 
+    <menuitem 
+        id="menu_ra_leak_root" 
+        parent="main_menu_rafm_managment"
+        sequence="3"
+        name="RA Cases"/>
+    
+    <menuitem 
+        id="menu_ra_leak_cases" 
+        name="Leak Cases" 
+        sequence="1"
+        parent="menu_ra_leak_root" 
+        action="action_ra_leak_case"/>
+
 
     <menuitem
             id="menu_fraud_root"
             parent="main_menu_rafm_managment"
-            sequence="2"
+            sequence="3"
             name="Fraud Management"/>
 
     <menuitem
@@ -69,12 +84,19 @@
                 parent="menu_rafm_managment_config"
                 sequence="5"
                 action="action_fraud_type"/>
+        
+        <menuitem
+                id="menu_rafm_leak_category"
+                name="RA Leak Category"
+                parent="menu_rafm_managment_config"
+                sequence="6"
+                action="action_ra_leak_category"/>
 
     <menuitem 
         id="menu_rafm_logs" 
         name="Logs" 
         parent="main_menu_rafm_managment"
-        sequence="3"/>
+        sequence="5"/>
         
         <menuitem 
             id="menu_rafm_controls_status" 

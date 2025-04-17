@@ -1,0 +1,90 @@
+<odoo>
+  <!-- Form View -->
+  <record id="view_ra_leak_case_form" model="ir.ui.view">
+    <field name="name">ra.leak.case.form</field>
+    <field name="model">ra.leak.case</field>
+    <field name="arch" type="xml">
+      <form string="RA Leak Case">
+        <header>
+          <field name="status" widget="statusbar"/>
+        </header>
+
+        <sheet>
+          <group>
+            <group>
+              <field name="name"/>
+              <field name="category_id"  options="{'no_create': True, 'no_create_edit': True}"/>
+            </group>
+            <group string="Classification">
+              <field name="severity"/>
+              <field name="detection_method"/>
+              <field name="detected_by_id"  options="{'no_create': True, 'no_create_edit': True}"/>
+            </group>
+            <group string="Timeline and Impact">
+              <field name="date_reported"/>
+              <field name="date_resolved"/>
+              <field name="impacted_revenue"/>
+              <field name="saved_revenue"/>
+            </group>
+          </group>
+          <notebook>
+            <page string="Description">
+              <field name="description"/>
+            </page>
+          </notebook>
+        </sheet>
+      </form>
+    </field>
+  </record>
+
+  <!-- Tree View -->
+  <record id="view_ra_leak_case_tree" model="ir.ui.view">
+    <field name="name">ra.leak.case.tree</field>
+    <field name="model">ra.leak.case</field>
+    <field name="arch" type="xml">
+      <tree string="RA Leak Cases">
+        <field name="name"/>
+        <field name="category_id"/>
+        <field name="severity"/>
+        <field name="status" widget="badge" decoration-warning="status == 'open'"
+                                      decoration-info="status == 'in_progress'"
+                                      decoration-success="status == 'closed'"/>
+        <field name="detected_by_id"/>
+        <field name="date_reported"/>
+        <field name="impacted_revenue"/>
+        <field name="saved_revenue"/>
+      </tree>
+    </field>
+  </record>
+
+  <!-- Action -->
+  <record id="action_ra_leak_case" model="ir.actions.act_window">
+    <field name="name">RA Leak Cases</field>
+    <field name="res_model">ra.leak.case</field>
+    <field name="view_mode">tree,form</field>
+    <field name="help" type="html">
+      <p class="o_view_nocontent_smiling_face">
+        Create your first RA leak case
+      </p>
+    </field>
+  </record>
+
+
+  <!-- Fraud Type Tree/Form Views -->
+  <record id="view_ra_case_category" model="ir.ui.view">
+    <field name="name">ra.leak.category.tree</field>
+    <field name="model">ra.leak.category</field>
+    <field name="arch" type="xml">
+      <tree editable="bottom">
+        <field name="name"/>
+      </tree>
+    </field>
+  </record>
+
+  <record id="action_ra_leak_category" model="ir.actions.act_window">
+    <field name="name">RA Leak Category</field>
+    <field name="res_model">ra.leak.category</field>
+    <field name="view_mode">tree</field>
+  </record>
+
+</odoo>
