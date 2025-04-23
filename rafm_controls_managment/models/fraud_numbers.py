@@ -24,6 +24,17 @@ class FraudNumberRange(models.Model):
 
     activity_ids = fields.One2many('fraud.number.range.line','fraud_id')
 
+
+    detected_by = fields.Char(string='Detected By')
+    detected_at = fields.Datetime(string="Detected at")
+
+    reported_by = fields.Char(string='Reported By')
+    reported_at = fields.Datetime(string="Reported at")
+
+    blocked_by = fields.Char(string='Blocked By')
+    blocked_at = fields.Datetime(string="Blocked at")
+
+
     def make_reported(self):
         self.status='sent'
         self.env['fraud.number.range.line'].create({

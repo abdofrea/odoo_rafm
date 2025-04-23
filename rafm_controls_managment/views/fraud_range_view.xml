@@ -8,8 +8,8 @@
                 <field name="range_fraud"/>
                 <field name="type_fraud"/>
                 <field name="status" widget="badge" decoration-warning="status == 'suspected'"
-                                      decoration-info="status == 'sent'"
-                                      decoration-danger="status == 'blocked'"/>
+                       decoration-info="status == 'sent'"
+                       decoration-danger="status == 'blocked'"/>
                 <field name="time_stamp"/>
             </tree>
         </field>
@@ -39,10 +39,24 @@
 
                 <sheet>
                     <group>
-                        <field name="range_fraud" placeholder="e.g. +21891xxxxxxx or IMSI prefix"/>
-                        <field name="type_fraud"
-                               options="{'no_create': True, 'no_create_edit': True}"/>
-                        <field name="time_stamp"/>
+                        <group>
+                            <field name="range_fraud" placeholder="e.g. +21891xxxxxxx or IMSI prefix"/>
+                            <field name="type_fraud"
+                                   options="{'no_create': True, 'no_create_edit': True}"/>
+                            <field name="time_stamp"/>
+                        </group>
+                        <group string="Detected">
+                            <field name="detected_by"/>
+                            <field name="detected_at"/>
+                        </group>
+                        <group string="Reported">
+                            <field name="reported_by"/>
+                            <field name="reported_at"/>
+                        </group>
+                        <group string="Blocked">
+                            <field name="blocked_by"/>
+                            <field name="blocked_at"/>
+                        </group>
                     </group>
                     <group>
                         <field name="description" placeholder="Additional notes or context..."/>
@@ -54,8 +68,8 @@
                                     <field name="time_stamp"/>
                                     <field name="create_uid" string="Action by"/>
                                     <field name="status" widget="badge" decoration-warning="status == 'suspected'"
-                                      decoration-info="status == 'sent'"
-                                      decoration-danger="status == 'blocked'"/>
+                                           decoration-info="status == 'sent'"
+                                           decoration-danger="status == 'blocked'"/>
                                 </tree>
                             </field>
                         </page>
