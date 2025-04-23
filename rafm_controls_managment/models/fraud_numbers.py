@@ -13,6 +13,11 @@ class FraudNumberRange(models.Model):
     _rec_name = 'range_fraud'
 
     range_fraud = fields.Char(string="MSISDN_Range/IMSI/IMEI")
+    range_type = fields.Selection([
+        ('msisdn', 'MSISDN'),
+        ('imsi', 'IMSI'),
+        ('imei', 'IMEI')
+    ], string='Range Type', required=True)
     time_stamp = fields.Datetime(string='Time Stamp', default = fields.Datetime.now)
     description = fields.Text(string='Description')
     type_fraud = fields.Many2one('fraud.type',string='Fraud Type')
