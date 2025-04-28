@@ -18,6 +18,9 @@ class FraudNumberRange(models.Model):
         ('imsi', 'IMSI'),
         ('imei', 'IMEI')
     ], string='Range Type', required=True)
+
+    range_type_id = fields.Many2one('range.type', string='Range Type', required=True)
+
     time_stamp = fields.Datetime(string='Time Stamp', default = fields.Datetime.now)
     description = fields.Text(string='Description')
     type_fraud = fields.Many2one('fraud.type',string='Fraud Type')
@@ -31,11 +34,14 @@ class FraudNumberRange(models.Model):
 
 
     detected_by = fields.Many2one('res.partner',string='Detected By')
+    # detected_by = fields.Many2one('res.partner', string='Blocked By')
     detected_at = fields.Datetime(string="Detected at")
 
-    reported_by = fields.Many2one('res.partner',string='Reported By')
+    reported_by = fields.Many2one('res.partner', string='Reported By')
+    # reported_by = fields.Many2one('res.partner', string='Blocked By')
     reported_at = fields.Datetime(string="Reported at")
 
+    # blocked_by = fields.Char(string='Blocked By')
     blocked_by = fields.Many2one('res.partner',string='Blocked By')
     blocked_at = fields.Datetime(string="Blocked at")
 
@@ -68,5 +74,10 @@ class FraudNumberRangeLine(models.Model):
 
 class FraudType(models.Model):
     _name = 'fraud.type'
+
+    name = fields.Char()
+
+class RangeType(models.Model):
+    _name = 'range.type'
 
     name = fields.Char()

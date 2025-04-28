@@ -84,6 +84,13 @@
                 parent="menu_rafm_managment_config"
                 sequence="5"
                 action="action_fraud_type"/>
+
+		<menuitem
+                id="menu_range_types"
+                name="Range Types"
+                parent="menu_rafm_managment_config"
+                sequence="5"
+                action="action_range_type"/>
         
         <menuitem
                 id="menu_rafm_leak_category"

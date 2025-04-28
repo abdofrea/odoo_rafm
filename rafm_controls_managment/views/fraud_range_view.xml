@@ -40,7 +40,7 @@
                 <sheet>
                     <group>
                             <field name="range_fraud" placeholder="e.g. +21891xxxxxxx or IMSI prefix"/>
-                            <field name="range_type" />
+							<field name="range_type_id" />
                             <field name="type_fraud"
                                    options="{'no_create': True, 'no_create_edit': True}"/>
                             <field name="time_stamp"/>
@@ -102,6 +102,24 @@
     <record id="action_fraud_type" model="ir.actions.act_window">
         <field name="name">Fraud Types</field>
         <field name="res_model">fraud.type</field>
+        <field name="view_mode">tree</field>
+    </record>
+    
+	
+	<!-- Fraud Type Tree/Form Views -->
+    <record id="view_range_type_tree" model="ir.ui.view">
+        <field name="name">range.type.tree</field>
+        <field name="model">range.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_range_type" model="ir.actions.act_window">
+        <field name="name">Range Types</field>
+        <field name="res_model">Range.type</field>
         <field name="view_mode">tree</field>
     </record>
 
