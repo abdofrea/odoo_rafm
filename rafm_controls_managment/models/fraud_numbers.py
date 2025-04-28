@@ -30,13 +30,13 @@ class FraudNumberRange(models.Model):
     activity_ids = fields.One2many('fraud.number.range.line','fraud_id')
 
 
-    detected_by = fields.Char(string='Detected By')
+    detected_by = fields.Many2one('res.partner',string='Detected By')
     detected_at = fields.Datetime(string="Detected at")
 
-    reported_by = fields.Char(string='Reported By')
+    reported_by = fields.Many2one('res.partner',string='Reported By')
     reported_at = fields.Datetime(string="Reported at")
 
-    blocked_by = fields.Char(string='Blocked By')
+    blocked_by = fields.Many2one('res.partner',string='Blocked By')
     blocked_at = fields.Datetime(string="Blocked at")
 
 
