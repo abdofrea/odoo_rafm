@@ -13,11 +13,11 @@ class FraudNumberRange(models.Model):
     _rec_name = 'range_fraud'
 
     range_fraud = fields.Char(string="MSISDN_Range/IMSI/IMEI")
-    range_type = fields.Selection([
-        ('msisdn', 'MSISDN'),
-        ('imsi', 'IMSI'),
-        ('imei', 'IMEI')
-    ], string='Range Type', required=True)
+    # range_type = fields.Selection([
+    #     ('msisdn', 'MSISDN'),
+    #     ('imsi', 'IMSI'),
+    #     ('imei', 'IMEI')
+    # ], string='Range Type', required=True)
 
     range_type_id = fields.Many2one('range.type', string='Range Type', required=True)
 

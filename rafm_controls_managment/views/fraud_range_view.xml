@@ -6,11 +6,20 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="range_fraud"/>
-                <field name="type_fraud"/>
                 <field name="status" widget="badge" decoration-warning="status == 'suspected'"
                        decoration-info="status == 'sent'"
                        decoration-danger="status == 'blocked'"/>
-                <field name="time_stamp"/>
+
+                <field name="range_type_id"/>
+                <field name="type_fraud"/>
+				<field name="time_stamp" />
+
+				<field name="detected_by" optional="hide"/>
+                <field name="detected_at" optional="hide"/>
+				<field name="reported_by" optional="hide"/>
+                <field name="reported_at" optional="hide"/>
+				<field name="blocked_by" optional="hide"/>
+                <field name="blocked_at" optional="hide"/>
             </tree>
         </field>
     </record>
