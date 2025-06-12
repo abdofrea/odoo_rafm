@@ -65,7 +65,7 @@ class FraudNumberRangeLine(models.Model):
     _name = 'fraud.number.range.line'
 
     fraud_id = fields.Many2one('fraud.number.range')
-    time_stamp = fields.Datetime(string='Time Stamp', default = fields.Datetime.now())
+    time_stamp = fields.Datetime(string='Time Stamp', default = fields.Datetime.now)
     status = fields.Selection([
         ('suspected', 'Suspected'),
         ('sent', 'Reported'),
