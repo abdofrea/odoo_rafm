@@ -8,3 +8,4 @@ from . import rafm_control_status
 from . import daily_emails
 from . import fraud_numbers
 from . import rafm_leak_case
+from . import rafm_documnets_invoice

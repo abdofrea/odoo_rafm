@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!-- Tree View for Documents -->
+    <record id="view_rafm_invoice_document_tree" model="ir.ui.view">
+        <field name="name">rafm.invoice.document.tree</field>
+        <field name="model">rafm.invoice.document</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="document_type_id"/>
+                <field name="time_stamp"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View for Documents -->
+    <record id="view_rafm_invoice_document_form" model="ir.ui.view">
+        <field name="name">rafm.invoice.document.form</field>
+        <field name="model">rafm.invoice.document</field>
+        <field name="arch" type="xml">
+            <form string="RAFM Invoice Document">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="document_type_id"/>
+                        </group>
+                        <group>
+                            <field name="time_stamp"/>
+                            <field name="description"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Attachments">
+                            <field name="document_ids">
+                                <tree editable="bottom">
+                                    <field name="time_stamp"/>
+                                    <field name="file_name"/>
+                                    <field name="attachment_id" filename="file_name"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View for Document Lines (Optional) -->
+    <record id="view_rafm_invoice_document_type_tree" model="ir.ui.view">
+        <field name="name">rafm.invoice.document.type.tree</field>
+        <field name="model">rafm.invoice.document.type</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Action for the Document -->
+    <record id="action_rafm_invoice_document" model="ir.actions.act_window">
+        <field name="name">RAFM Documents and Invoices</field>
+        <field name="res_model">rafm.invoice.document</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- Action for the Document -->
+    <record id="action_rafm_invoice_document_type" model="ir.actions.act_window">
+        <field name="name">RAFM Documents and Invoices Types</field>
+        <field name="res_model">rafm.invoice.document.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_rafm_invoice_root" name="RAFM" sequence="10"/>
+    <menuitem id="menu_rafm_invoice_document" name="Documents" parent="menu_rafm_invoice_root" sequence="20"/>
+    <menuitem id="menu_rafm_invoice_document_action" name="Manage Documents" parent="menu_rafm_invoice_document"
+              action="action_rafm_invoice_document" sequence="30"/>
+</odoo>

@@ -6,7 +6,8 @@
             <form string="RAFM">
                 <sheet>
                     <div class="oe_button_box" name="button_box">
-                        <button name="open_modification_log_wizard" type="object" string="Log Modification" icon="fa-plus-circle" class="oe_stat_button"/>
+                        <button name="open_modification_log_wizard" type="object" string="Log Modification"
+                                icon="fa-plus-circle" class="oe_stat_button"/>
                     </div>
                     <group>
                         <group>
@@ -19,8 +20,8 @@
                             <field name="critical_level"/>
                         </group>
                         <group>
-							<field name="assigned_ids" widget="many2many_tags"  options="{'no_create': True}"/>
-                            <field name="source_nodes" widget="many2many_tags"  options="{'no_create': True}"/>
+                            <field name="assigned_ids" widget="many2many_tags" options="{'no_create': True}"/>
+                            <field name="source_nodes" widget="many2many_tags" options="{'no_create': True}"/>
                             <field name="reason" colspan="2"/>
                         </group>
                     </group>
@@ -28,15 +29,16 @@
                     <notebook>
                         <page string="Frontend and Cycle">
                             <group>
-							<group>
-                                <field name="frontend_id" widget="many2many_tags"/>
-								<field name="url" widget="url"/>
-                                <field name="audits_generation_cycle_id" widget="many2many_tags"/>
+                                <group>
+                                    <field name="frontend_id" widget="many2many_tags"/>
+                                    <field name="url" widget="url"/>
+                                    <field name="audits_generation_cycle_id" widget="many2many_tags"/>
+                                </group>
                             </group>
-							</group>
                         </page>
                         <page string="Modification Logs">
-                            <field name="modifications_ids" options="{'no_open': True}" widget="one2many_list" readonly="1" create="false" edit="false" delete="false">
+                            <field name="modifications_ids" options="{'no_open': True}" widget="one2many_list"
+                                   readonly="1" create="false" edit="false" delete="false">
                                 <tree readonly="1">
                                     <field name="time_stamp"/>
                                     <field name="description"/>
@@ -73,9 +75,10 @@
         <field name="model">rafm.control</field>
         <field name="arch" type="xml">
             <search>
-				<field name="audit_name"/>
-				<field name="rafm_id"/>
-                <filter name="checked_recently" string="Controls To Check" domain="[('checked_recently', '=', False),('assigned_ids', 'in', [uid])]"/>
+                <field name="audit_name"/>
+                <field name="rafm_id"/>
+                <filter name="checked_recently" string="Controls To Check"
+                        domain="[('checked_recently', '=', False),('assigned_ids', 'in', [uid])]"/>
             </search>
         </field>
     </record>
@@ -90,13 +93,13 @@
             <p>Create and manage RAFM controls.</p>
         </field>
     </record>
-	
-	<record id="action_make_pass" model="ir.actions.server">
-    <field name="name">Mark as Pass</field>
-    <field name="model_id" ref="rafm_controls_managment.model_rafm_control"/> <!-- Update this -->
-    <field name="binding_model_id" ref="rafm_controls_managment.model_rafm_control"/> <!-- Same here -->
-    <field name="state">code</field>
-    <field name="code">records.make_pass()</field>
-</record>
+
+    <record id="action_make_pass" model="ir.actions.server">
+        <field name="name">Mark as Pass</field>
+        <field name="model_id" ref="rafm_controls_managment.model_rafm_control"/> <!-- Update this -->
+        <field name="binding_model_id" ref="rafm_controls_managment.model_rafm_control"/> <!-- Same here -->
+        <field name="state">code</field>
+        <field name="code">records.make_pass()</field>
+    </record>
 
 </odoo>

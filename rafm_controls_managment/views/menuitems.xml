@@ -36,6 +36,13 @@
             name="Fraud Management"/>
 
     <menuitem
+            id="menu_rafm_invoice_document"
+            parent="main_menu_rafm_managment"
+            sequence="4"
+            name="RAFM Documents and Invoices"
+            action="action_rafm_invoice_document"/>
+
+    <menuitem
             id="menu_fraud_ranges"
             name="Number Ranges"
             parent="menu_fraud_root"
@@ -98,6 +105,13 @@
                 parent="menu_rafm_managment_config"
                 sequence="6"
                 action="action_ra_leak_category"/>
+
+    <menuitem
+                id="menu_rafm_invoice_document_type"
+                name="RAFM Documents and Invoices Types"
+                parent="menu_rafm_managment_config"
+                sequence="7"
+                action="action_rafm_invoice_document_type"/>
 
     <menuitem 
         id="menu_rafm_logs" 

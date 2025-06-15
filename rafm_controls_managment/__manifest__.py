@@ -22,6 +22,7 @@
         'views/rafm_controls_status.xml',
         'views/rafm_leak_case_view.xml',
         'views/fraud_range_view.xml',
+        'views/rafm_document_invoces.xml',
         'views/menuitems.xml',
         'wizard/register_modification_log_view.xml',
         'wizard/rafm_controls_status_log_view .xml',
