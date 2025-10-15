@@ -30,6 +30,7 @@ access_controls_modification_wizard,access_controls_modification_wizard,model_ra
 access_rafm_controls_status,access_rafm_controls_status,model_rafm_controls_status,,1,1,1,0
 
 access_ra_leak_case,access_ra_leak_case,model_ra_leak_case,,1,1,1,1
+access_ra_leak_case_line,access_ra_leak_case_line,model_ra_leak_case_line,,1,1,1,1
 
 access_rafm_controls_status_wizard,access_rafm_controls_status_wizard,model_rafm_controls_status_wizard,,1,1,1,1
 

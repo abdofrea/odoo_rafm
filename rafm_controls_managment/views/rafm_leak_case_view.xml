@@ -6,30 +6,61 @@
     <field name="arch" type="xml">
       <form string="RA Leak Case">
         <header>
-          <field name="status" widget="statusbar" options="{'clickable': True}"/>
+			<button name="inprogress_case"
+                string="Start"
+                type="object"
+                class="btn-primary"
+                attrs="{'invisible': [('status', '!=', 'open')]}"/>
+			<button name="close_case"
+                string="Close"
+                type="object"
+                class="btn-danger"
+                attrs="{'invisible': [('status', '!=', 'in_progress')]}"/>
+			<button name="action_set_open"
+                string="Re-open"
+                type="object"
+                class="btn-secondary"
+                attrs="{'invisible': [('status', '!=', 'closed')]}"/>
+			<field name="status" widget="statusbar" statusbar_visible="open,in_progress,closed"/>
         </header>
 
         <sheet>
           <group>
             <group>
-              <field name="name"/>
-              <field name="category_id"  options="{'no_create': True, 'no_create_edit': True}"/>
+              <field name="name" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+              <field name="category_id" attrs="{'readonly': [('status', '=', 'closed')]}" options="{'no_create': True, 'no_create_edit': True}"/>
             </group>
             <group string="Classification">
-              <field name="severity"/>
-              <field name="detection_method"/>
-              <field name="detected_by_id"  options="{'no_create': True, 'no_create_edit': True}"/>
+              <field name="severity" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+              <field name="detection_method" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+              <field name="detected_by_id"  options="{'no_create': True, 'no_create_edit': True}" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+			  <field name="date_reported" attrs="{'readonly': [('status', '=', 'closed')]}"/>
             </group>
             <group string="Timeline and Impact">
-              <field name="date_reported"/>
-              <field name="date_resolved"/>
-              <field name="impacted_revenue"/>
-              <field name="saved_revenue"/>
+				<field name="date_started" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+				<field name="date_resolved" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+				<field name="case_duration"/>
+			</group>
+			<group string="Revenue Impact">
+				<field name="impacted_revenue" invisible="1"/>
+				<field name="total_loss_revenue"/>
+				<field name="saved_revenue" attrs="{'readonly': [('status', '=', 'closed')]}"/>
+            </group>
+			<group string="Description">
+              <field name="description" attrs="{'readonly': [('status', '=', 'closed')]}"/>
             </group>
           </group>
           <notebook>
-            <page string="Description">
-              <field name="description"/>
+            <page string="Case Details">
+				<field name="leak_line_ids" attrs="{'readonly': [('status', '=', 'closed')]}">
+					<tree editable="bottom">
+						<field name="name"/>
+						<field name="unit"/>
+						<field name="unit_count"/>
+						<field name="unit_cost"/>
+						<field name="total_loss"/>
+					</tree>
+				</field>
             </page>
           </notebook>
         </sheet>
@@ -51,7 +82,8 @@
                                       decoration-success="status == 'closed'"/>
         <field name="detected_by_id"/>
         <field name="date_reported"/>
-        <field name="impacted_revenue"/>
+		<field name="case_duration"/>
+        <field name="total_loss_revenue"/>
         <field name="saved_revenue"/>
       </tree>
     </field>
