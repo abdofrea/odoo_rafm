@@ -80,10 +80,10 @@ class RALeakCase(models.Model):
         # remove the unique field if not supplied by caller
         default.setdefault('status', 'open')
         default.setdefault('date_started', False)
-        default.setdefault('date_reported', False)
+        default.setdefault('date_reported', fields.Date.today())
         default.setdefault('date_resolved', False)
         default.setdefault('detection_method', False)
-        default.setdefault('name', default['name']+'-COPY')
+        default.setdefault('name', (self.name or '') + '-COPY')
         default.setdefault('leak_line_ids', False)
         default.setdefault('description', False)
         default.setdefault('impacted_revenue', False)
